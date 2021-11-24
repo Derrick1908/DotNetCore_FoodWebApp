@@ -36,8 +36,13 @@ namespace OdeToFood.Pages.Restaurants
 
         public IActionResult OnPost()
         {
-            Restaurant = restaurantData.Update(Restaurant);
-            restaurantData.Commit();
+            if(ModelState.IsValid)          //ModelState checks the Data Validations set on the Entities through the Annotations. If any one gives an error its State is InValid
+            {
+                restaurantData.Update(Restaurant);
+                restaurantData.Commit();
+                return RedirectToPage("./Detail", new { restaurantId = Restaurant.Id });
+            }
+            Cuisines = htmlHelper.GetEnumSelectList<CuisineType>();            
             return Page();
         }
     }
