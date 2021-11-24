@@ -6,7 +6,7 @@
 <form method="get" >
     <div class="form-group">
         <div class="input-group">
-            <input type="search" class="form-control" value="" name="searchTerm"/>
+            <input type="search" class="form-control" asp-for="SearchTerm"/> <!--asp-for Does a 2-Way Binding i.e. Links the Data of the TextBox to the Variable as well as Output Valus of Variable back to the Text Box -->
             <span class="input-group-btn">
                 <button class="btn btn-default">
                     <i class="glyphicon glyphicon-search"></i> 
