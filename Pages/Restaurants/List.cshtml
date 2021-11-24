@@ -25,10 +25,15 @@
             <td>@restaurant.Cuisine</td>
             <td>
                 <a class="btn btn-lg"
-                   asp-page="./Detail"      
+                   asp-page="./Detail"
                    asp-route-restaurantId="@restaurant.Id">
-                                                            <!-- //href="/Restaurants/Detail?restaurantId=@@restaurant.Id"  //Instead of using href we will use the tag asp-page as it is very useful for routing to pages and knows also what inputs are needed by the page-->
+                    <!-- //href="/Restaurants/Detail?restaurantId=@@restaurant.Id"  //Instead of using href we will use the tag asp-page as it is very useful for routing to pages and knows also what inputs are needed by the page-->
                     <i class="glyphicon glyphicon-zoom-in"></i>
+                </a>
+                <a class="btn btn-lg"
+                   asp-page="./Edit"
+                   asp-route-restaurantId="@restaurant.Id">                    
+                    <i class="glyphicon glyphicon-edit"></i>
                 </a>
             </td>
         </tr>
