@@ -18,10 +18,9 @@
     <div class="form-group">
         <label asp-for="Restaurant.Cuisine"></label>       <!--asp-for serves as the for variable in label-->
         <select class="form-control" asp-for="Restaurant.Cuisine"
-                asp-items="Model.Cuisines">
+                                     asp-items="Model.Cuisines">
             <!--Note that rather than using html.GetEnumSelectList<CuisineType> in asp-items we have used a Model as it becomes easier to manipulate in code later on if needed rather than doing it at html side(messy)-->
         </select>
     </div>
     <button type="submit" class="btn btn-primary">Save</button>
 </form>
-<a href="C:\Users\derricknazareth\source\repos\OdeToFood\Pages\Restaurants\List.cshtml.cs">C:\Users\derricknazareth\source\repos\OdeToFood\Pages\Restaurants\List.cshtml.cs</a>

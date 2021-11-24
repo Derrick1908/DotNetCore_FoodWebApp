@@ -14,8 +14,9 @@ namespace OdeToFood.Pages.Restaurants
     {
         private readonly IRestaurantData restaurantData;
         private readonly IHtmlHelper htmlHelper;
-        
-        public Restaurant Restaurant { get; set; }
+
+        [BindProperty]                  //This Means that when we get a Restaurant and Update it, it gets saved to this Variable and on the Save Button for the Post Method, this Variable is sent
+        public Restaurant Restaurant { get; set; }      //Serves both as Input and Output Variable. Only wanted for Post Method.
         public IEnumerable<SelectListItem> Cuisines { get; set; }
         public EditModel(IRestaurantData restaurantData, IHtmlHelper htmlHelper)
         {
@@ -30,6 +31,13 @@ namespace OdeToFood.Pages.Restaurants
             {
                 return RedirectToPage("./NotFound");
             }
+            return Page();
+        }
+
+        public IActionResult OnPost()
+        {
+            Restaurant = restaurantData.Update(Restaurant);
+            restaurantData.Commit();
             return Page();
         }
     }
