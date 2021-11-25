@@ -17,6 +17,8 @@ namespace OdeToFood.Pages.Restaurants
         {
             this.restaurantData = restaurantData;
         }
+        [TempData]                      //This Binds the TempData with the same Key Name to the Value it holds assuming the Types Match.
+        public string Message { get; set; }
         public Restaurant Restaurant { get; set; }
         public IActionResult OnGet(int restaurantId)        //Replaced void with IActionResult, this is because whenever there is Void, since nothing is being returned, the View i.e. cshtml is first rendered
         {
