@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OdeToFood.Data;
@@ -25,6 +26,12 @@ namespace OdeToFood
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //This part configures the DBProvider for the DbContext to be used.
+            services.AddDbContextPool<OdeToFoodDbContext>(options =>       //AddDBContextPool over AddDbContext so that your DBContext is maintained in the Pool, and can be reused later so that there is efficiency.
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("OdeToFoodDb"));
+            });
+
             services.AddSingleton<IRestaurantData, InMemoryRestuarantData>();
 
             services.Configure<CookiePolicyOptions>(options =>
