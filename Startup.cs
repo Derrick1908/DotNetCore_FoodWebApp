@@ -32,7 +32,8 @@ namespace OdeToFood
                 options.UseSqlServer(Configuration.GetConnectionString("OdeToFoodDb"));
             });
 
-            services.AddSingleton<IRestaurantData, InMemoryRestuarantData>();
+            //services.AddSingleton<IRestaurantData, InMemoryRestuarantData>();    //Singelton is once for entire lifteime and this is bad wrt to Threads and DbContext i.e. it is not safe
+            services.AddScoped<IRestaurantData, SqlRestaurantData>();       //Since we are now using DBContext it is better to use Scoped Lifetime of Service i.e. Per Request it is generated
 
             services.Configure<CookiePolicyOptions>(options =>
             {
