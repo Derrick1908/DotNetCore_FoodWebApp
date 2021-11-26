@@ -19,7 +19,7 @@
 
 @foreach (var restaurant in Model.Restaurants)
 {
-    <partial name="_Summary" model="restaurant" />      <!--Since Summary is within the same Folder it can be accessed by all Pages within it. If we placed it in the Shared Folder it could be shared by all.-->
+    <partial name="_Summary" model="restaurant" />      <!--Since Summary is within the same Folder it can be accessed by all Pages within it. If we placed it in the Shared Folder it could be shared by all. Model is the particular restaurant value in the Loop that is sent to the Partial Page each time.-->
 }
 
 <a asp-page=".\Edit" class="btn btn-primary">Add New</a>
